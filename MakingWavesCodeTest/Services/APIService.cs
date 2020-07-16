@@ -47,5 +47,35 @@ namespace MakingWavesCodeTest.Services
                 dataList.Add(dataColor);
             }
         }
+        public Dictionary<string, object> GetGroupedLists(List<Dictionary<string,string>> dataList)
+        {
+            Dictionary<string, object> dataLists = new Dictionary<string, object>();
+            List<Dictionary<string, string>> group1 = new List<Dictionary<string, string>>();
+            List<Dictionary<string, string>> group2 = new List<Dictionary<string, string>>();
+            List<Dictionary<string, string>> group3 = new List<Dictionary<string, string>>();
+
+            for (int i = 0; i < dataList.Count; i++)
+            {
+                string[] pantoneValues = dataList[i]["pantone_value"].Split('-');
+                int firstPantoneValue =  int.Parse(pantoneValues[0]);
+
+                if (firstPantoneValue % 3 == 0)
+                {
+                    group1.Add(dataList[i]);
+                }
+                else if (firstPantoneValue % 2 == 0 && firstPantoneValue % 3 != 0)
+                {
+                    group2.Add(dataList[i]);
+                }
+                else
+                {
+                    group3.Add(dataList[i]);
+                }
+            }
+            dataLists["group1"] = group1.OrderBy(d=>d["year"]).ToList();
+            dataLists["group2"] = group2.OrderBy(d=>d["year"]).ToList();
+            dataLists["group3"] = group3.OrderBy(d=>d["year"]).ToList();
+            return dataLists;
+        }
     }
 }

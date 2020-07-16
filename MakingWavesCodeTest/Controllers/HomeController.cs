@@ -13,7 +13,8 @@ namespace MakingWavesCodeTest.Controllers
         public ActionResult Index()
         {
             List<Dictionary<string,string>> dataList= APIservice.GetDataList();
-            return View();
+            Dictionary<string,object> dataLists = APIservice.GetGroupedLists(dataList);          
+            return View(dataLists);
         }
     }
 }

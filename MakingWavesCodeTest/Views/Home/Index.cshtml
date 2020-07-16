@@ -1,3 +1,79 @@
-﻿@{
+﻿@model Dictionary<string, object>
+@{
     ViewBag.Title = "Home Page";
+
+    List<Dictionary<string, string>> group1 = (List<Dictionary<string, string>>)Model["group1"];
+    List<Dictionary<string, string>> group2 = (List<Dictionary<string, string>>)Model["group2"];
+    List<Dictionary<string, string>> group3 = (List<Dictionary<string, string>>)Model["group3"];
+
 }
+<div class="row">
+    <div class="col-md-6">
+        <h3>Grupp 1</h3>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Namn</th>
+                    <th>År</th>
+                    <th>Värde</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < group1.Count; i++)
+                {
+                    <tr>
+                        <td>@group1[i]["name"]</td>
+                        <td>@group1[i]["year"]</td>
+                        <td>@group1[i]["pantone_value"]</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-6">
+        <h3>Grupp 2</h3>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Namn</th>
+                    <th>År</th>
+                    <th>Värde</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < group2.Count; i++)
+                {
+                    <tr>
+                        <td>@group2[i]["name"]</td>
+                        <td>@group2[i]["year"]</td>
+                        <td>@group2[i]["pantone_value"]</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <h3>Grupp 3</h3>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Namn</th>
+                    <th>År</th>
+                    <th>Värde</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < group3.Count; i++)
+                {
+                    <tr>
+                        <td>@group3[i]["name"]</td>
+                        <td>@group3[i]["year"]</td>
+                        <td>@group3[i]["pantone_value"]</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
