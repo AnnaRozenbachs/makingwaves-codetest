@@ -51,9 +51,9 @@ namespace MakingWavesCodeTest.Services
         public Dictionary<string, object> GetGroupedLists(List<Dictionary<string,string>> dataList)
         {
             Dictionary<string, object> dataLists = new Dictionary<string, object>();
-            List<Dictionary<string, string>> group1 = new List<Dictionary<string, string>>();
-            List<Dictionary<string, string>> group2 = new List<Dictionary<string, string>>();
-            List<Dictionary<string, string>> group3 = new List<Dictionary<string, string>>();
+            List<Dictionary<string, string>> list1 = new List<Dictionary<string, string>>();
+            List<Dictionary<string, string>> list2 = new List<Dictionary<string, string>>();
+            List<Dictionary<string, string>> list3 = new List<Dictionary<string, string>>();
 
             for (int i = 0; i < dataList.Count; i++)
             {
@@ -62,20 +62,20 @@ namespace MakingWavesCodeTest.Services
 
                 if (firstPantoneValue % 3 == 0)
                 {
-                    group1.Add(dataList[i]);
+                    list1.Add(dataList[i]);
                 }
                 else if (firstPantoneValue % 2 == 0 && firstPantoneValue % 3 != 0)
                 {
-                    group2.Add(dataList[i]);
+                    list2.Add(dataList[i]);
                 }
                 else
                 {
-                    group3.Add(dataList[i]);
+                    list3.Add(dataList[i]);
                 }
             }
-            dataLists["group1"] = group1.OrderBy(d=>d["year"]).ToList();
-            dataLists["group2"] = group2.OrderBy(d=>d["year"]).ToList();
-            dataLists["group3"] = group3.OrderBy(d=>d["year"]).ToList();
+            dataLists["list1"] = list1.OrderBy(d=>d["year"]).ToList();
+            dataLists["list2"] = list2.OrderBy(d=>d["year"]).ToList();
+            dataLists["list3"] = list3.OrderBy(d=>d["year"]).ToList();
             return dataLists;
         }
     }
