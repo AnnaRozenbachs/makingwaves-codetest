@@ -26,10 +26,10 @@ namespace MakingWavesCodeTest.Services
                 {                
                     Dictionary<string, object> result = JsonConvert.DeserializeObject<Dictionary<string, object>>(reader.ReadToEnd());
                     JArray data = JArray.Parse(result["data"].ToString());
-                    CreateList(dataList, data);
-                    response.Close();
+                    CreateList(dataList, data);                   
                 }
-            
+                response.Close();
+
             }
             return dataList;
            
@@ -47,6 +47,7 @@ namespace MakingWavesCodeTest.Services
                 dataList.Add(dataColor);
             }
         }
+
         public Dictionary<string, object> GetGroupedLists(List<Dictionary<string,string>> dataList)
         {
             Dictionary<string, object> dataLists = new Dictionary<string, object>();
