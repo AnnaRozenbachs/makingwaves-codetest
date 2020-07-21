@@ -26,7 +26,7 @@ namespace MakingWavesCodeTest.Services
                 {                
                     Dictionary<string, object> result = JsonConvert.DeserializeObject<Dictionary<string, object>>(reader.ReadToEnd());
                     JArray data = JArray.Parse(result["data"].ToString());
-                    CreateList(dataList, data);                   
+                    AddToList(dataList, data);                   
                 }
                 response.Close();
 
@@ -35,7 +35,7 @@ namespace MakingWavesCodeTest.Services
            
         }
 
-        private void CreateList(List<Dictionary<string,string>> dataList, JArray data)
+        private void AddToList(List<Dictionary<string,string>> dataList, JArray data)
         {
             for (int i = 0; i < data.Count; i++)
             {
